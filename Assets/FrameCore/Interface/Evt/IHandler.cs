@@ -1,5 +1,8 @@
-﻿
-public interface IHandler 
+﻿namespace NanoCorfe 
 {
-    public void CallBack(IArgs args);
+    public interface IHandler
+    {
+        public void CallBack(IArgs args);
+    }
 }
+

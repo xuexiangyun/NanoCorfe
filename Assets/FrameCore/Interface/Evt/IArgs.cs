@@ -1,8 +1,12 @@
 
-public interface IArgs 
+namespace NanoCorfe 
 {
-    EventType eventType { get; }
-    IToken token { get; }
-    object[] datas { get; }
-    public void InitArgs(EventType type, IToken token, object[] datas);
+    public interface IArgs
+    {
+        EventType eventType { get; }
+        IToken token { get; }
+        object[] datas { get; }
+        public void InitArgs(EventType type, IToken token, object[] datas);
+    }
+
 }

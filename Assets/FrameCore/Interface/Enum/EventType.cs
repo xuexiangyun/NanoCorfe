@@ -1,5 +1,8 @@
-
-public enum EventType
+namespace NanoCorfe
 {
+    public enum EventType
+    {
 
+    }
 }
+

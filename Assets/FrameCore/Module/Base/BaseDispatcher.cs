@@ -3,66 +3,75 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseDispatcher : MonoBehaviour, IDispatcher 
+namespace NanoCorfe 
 {
-    private  List<BaseDispatcher> dispatchers = new List<BaseDispatcher>();
-    protected Dictionary<EventType, List<IEvent>> EventDic = new Dictionary<EventType, List<IEvent>>();
-
-    public BaseDispatcher()
+    public class BaseDispatcher : MonoBehaviour, IDispatcher
     {
-        dispatchers.Add(this);
-    }
+        private List<BaseDispatcher> dispatchers = new List<BaseDispatcher>();
+        protected Dictionary<EventType, List<IEvent>> EventDic = new Dictionary<EventType, List<IEvent>>();
 
-    public void AddListener(EventType eventType, IHandler handler)
-    {
-        if (EventDic.ContainsKey(eventType))
+        public BaseDispatcher()
         {
-            for (int i = 0; i < EventDic[eventType].Count; i++)
+            dispatchers.Add(this);
+        }
+
+        public void AddListener(EventType eventType, IHandler handler)
+        {
+            if (EventDic.ContainsKey(eventType))
             {
-                EventDic[eventType][i].AddCallBack(handler);
+                for (int i = 0; i < EventDic[eventType].Count; i++)
+                {
+                    EventDic[eventType][i].AddCallBack(handler);
+                }
             }
         }
-    }
 
-    public void OnbroadcastEvt(EventType eventType, IArgs args)
-    {
-        for(int i = 0; i < dispatchers.Count; i++)
+        public void OnbroadcastEvt(EventType eventType, IArgs args)
         {
-            dispatchers[i].OnInvokeEvt(eventType, args);
-        }
-    }
-
-    public void OnInvokeEvt(EventType eventType, IArgs args)
-    {
-        if (EventDic.ContainsKey(eventType))
-        {
-            for(int i=0; i < EventDic[eventType].Count; i++)
+            for (int i = 0; i < dispatchers.Count; i++)
             {
-                EventDic[eventType][i].OnInvoke(args);
+                dispatchers[i].OnInvokeEvt(eventType, args);
             }
         }
-    }
 
-    public void RegisterEvt(IEvent evt)
-    {
-        if (!EventDic.ContainsKey(evt.eventType))
+        public void OnInvokeEvt(EventType eventType, IArgs args)
         {
-            EventDic.Add(evt.eventType, Func<List<IEvent>>(()=> new List<IEvent>()));
+            if (EventDic.ContainsKey(eventType))
+            {
+                for (int i = 0; i < EventDic[eventType].Count; i++)
+                {
+                    EventDic[eventType][i].OnInvoke(args);
+                }
+            }
+        }
+
+        public void RegisterEvt(IEvent evt)
+        {
+            if (!EventDic.ContainsKey(evt.eventType))
+            {
+                List<IEvent> events = new List<IEvent>();
+                events.Add(evt);
+                EventDic.Add(evt.eventType, events);
+            }
+            else
+            {
+            }
+        }
+
+        public void RemoveAllEvt()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void RemoveEvt(EventType eventType)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void RemoveListener(EventType eventType, IHandler handler)
+        {
+            throw new System.NotImplementedException();
         }
     }
 
-    public void RemoveAllEvt()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void RemoveEvt(EventType eventType)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void RemoveListener(EventType eventType, IHandler handler)
-    {
-        throw new System.NotImplementedException();
-    }
 }
