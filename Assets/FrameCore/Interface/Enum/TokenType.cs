@@ -1,6 +1,9 @@
-
-public enum TokenType 
+namespace NanoCorfe 
 {
+    public enum TokenType
+    {
 
 
+    }
 }
+

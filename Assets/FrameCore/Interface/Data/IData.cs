@@ -1,5 +1,8 @@
-﻿
-public class IData 
+﻿namespace NanoCorfe
 {
+    public class IData
+    {
 
+    }
 }
+

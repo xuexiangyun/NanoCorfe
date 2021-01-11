@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class UIdispatcher : BaseDispatcher
+namespace NanoCorfe 
 {
+    public class UIdispatcher : BaseDispatcher
+    {
 
 
+    }
 }
+
