@@ -12,8 +12,8 @@ NanoCorfe of Unity GameFramework
 
 
 总览
--[] 逻辑表现层   UI  plyercontroller
--[] 数据交互层   组件<->itoken类数据   I/o<->itoken类数据
--[] 网络交互层   媒介模式
--[] 核心算法层  
--[] 扩展层
+- [] 逻辑表现层   UI  plyercontroller
+- [] 数据交互层   组件<->itoken类数据   I/o<->itoken类数据
+- [] 网络交互层   媒介模式
+- [] 核心算法层  
+- [] 扩展层
