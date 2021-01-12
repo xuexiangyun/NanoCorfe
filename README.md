@@ -2,6 +2,7 @@
 NanoCorfe of Unity GameFramework 
 
 - [] 事件系统
+- [] 管理者系统
 - [] UI系统
 - [] 资源管理系统
 - [] 网络通信
